@@ -24,6 +24,8 @@
 		513DB0F027079B6E00A528F3 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DB0EF27079B6E00A528F3 /* AuthenticationService.swift */; };
 		513DB0F32707A64300A528F3 /* MockAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DB0F22707A64300A528F3 /* MockAuthenticationService.swift */; };
 		513DB0F52707A6B500A528F3 /* SignupViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DB0F42707A6B500A528F3 /* SignupViewModelTests.swift */; };
+		513DB0F92707AC8C00A528F3 /* UserDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DB0F82707AC8B00A528F3 /* UserDetailViewModel.swift */; };
+		513DB0FB2707AD1700A528F3 /* UserDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DB0FA2707AD1700A528F3 /* UserDetailViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		513DB0EF27079B6E00A528F3 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		513DB0F22707A64300A528F3 /* MockAuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthenticationService.swift; sourceTree = "<group>"; };
 		513DB0F42707A6B500A528F3 /* SignupViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModelTests.swift; sourceTree = "<group>"; };
+		513DB0F82707AC8B00A528F3 /* UserDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewModel.swift; sourceTree = "<group>"; };
+		513DB0FA2707AD1700A528F3 /* UserDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +144,7 @@
 			children = (
 				513DB0BF2707764800A528F3 /* SignupCodeChallengeTests.swift */,
 				513DB0F42707A6B500A528F3 /* SignupViewModelTests.swift */,
+				513DB0FA2707AD1700A528F3 /* UserDetailViewModelTests.swift */,
 			);
 			path = SignupCodeChallengeTests;
 			sourceTree = "<group>";
@@ -176,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				513DB0E42707900C00A528F3 /* SignupViewModel.swift */,
+				513DB0F82707AC8B00A528F3 /* UserDetailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -354,6 +360,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				513DB0F52707A6B500A528F3 /* SignupViewModelTests.swift in Sources */,
+				513DB0F92707AC8C00A528F3 /* UserDetailViewModel.swift in Sources */,
+				513DB0FB2707AD1700A528F3 /* UserDetailViewModelTests.swift in Sources */,
 				513DB0C02707764800A528F3 /* SignupCodeChallengeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

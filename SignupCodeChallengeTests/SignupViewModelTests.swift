@@ -121,6 +121,7 @@ class SignupViewModelTests: XCTestCase {
         XCTAssertTrue(autheticatonService.isAuthenticateUserCalled)
         XCTAssertTrue(viewModel.pushDetailView)
         XCTAssertNotNil(userManagerService.getUser())
+        XCTAssertTrue(userManagerService.hasValidUser())
         XCTAssertEqual(viewModel.firstName, userManagerService.getUser()!.firstName)
         XCTAssertEqual(viewModel.emailAddress, userManagerService.getUser()!.emailAddress)
         XCTAssertEqual(viewModel.website, userManagerService.getUser()!.website)
