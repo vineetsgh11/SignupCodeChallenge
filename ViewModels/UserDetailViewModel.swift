@@ -1,12 +1,10 @@
 //
 //  UserDetailViewModel.swift
-//  SignupCodeChallengeTests
 //
 //  Created by Vineet Singh on 10/1/21.
 //
 
 import Foundation
-@testable import SignupCodeChallenge
 
 class UserDetailViewModel : ObservableObject
 {

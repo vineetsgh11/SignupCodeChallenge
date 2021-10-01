@@ -53,6 +53,13 @@ struct SignupView: View {
 
 private extension SignupView {
     
+    var userDetailViewNavigationLink: some View {
+        Section {
+            NavigationLink(destination: viewModel.userDetailView,
+                           isActive: $viewModel.pushDetailView) {
+                EmptyView()
+            }.hidden()}
+    }
     
     var profileCreationText : some View
     {
@@ -121,7 +128,7 @@ private extension SignupView {
         Section
         {
             Button(action: {
-                print("Submit button clicked")
+                viewModel.AuthenticateUser()
             }, label: {
                 Text("Submit")
                     .fontWeight(.bold)
@@ -134,6 +141,7 @@ private extension SignupView {
                 .buttonStyle(CustomButtonStyle())
                 .disabled(!$viewModel.enableSubmitButton.wrappedValue)
 
+            userDetailViewNavigationLink
             
         }
     }

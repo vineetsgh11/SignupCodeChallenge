@@ -24,8 +24,10 @@
 		513DB0F027079B6E00A528F3 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DB0EF27079B6E00A528F3 /* AuthenticationService.swift */; };
 		513DB0F32707A64300A528F3 /* MockAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DB0F22707A64300A528F3 /* MockAuthenticationService.swift */; };
 		513DB0F52707A6B500A528F3 /* SignupViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DB0F42707A6B500A528F3 /* SignupViewModelTests.swift */; };
-		513DB0F92707AC8C00A528F3 /* UserDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DB0F82707AC8B00A528F3 /* UserDetailViewModel.swift */; };
 		513DB0FB2707AD1700A528F3 /* UserDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DB0FA2707AD1700A528F3 /* UserDetailViewModelTests.swift */; };
+		513DB1012707BB1D00A528F3 /* UserDetailsViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DB1002707BB1D00A528F3 /* UserDetailsViewBuilder.swift */; };
+		513DB1022707BB4100A528F3 /* UserDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DB0F82707AC8B00A528F3 /* UserDetailViewModel.swift */; };
+		513DB1032707BB5D00A528F3 /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DB0FC2707B8DF00A528F3 /* UserDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,8 @@
 		513DB0F42707A6B500A528F3 /* SignupViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModelTests.swift; sourceTree = "<group>"; };
 		513DB0F82707AC8B00A528F3 /* UserDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewModel.swift; sourceTree = "<group>"; };
 		513DB0FA2707AD1700A528F3 /* UserDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewModelTests.swift; sourceTree = "<group>"; };
+		513DB0FC2707B8DF00A528F3 /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
+		513DB1002707BB1D00A528F3 /* UserDetailsViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				513DB0B02707764400A528F3 /* SignupView.swift */,
+				513DB0FC2707B8DF00A528F3 /* UserDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -182,6 +187,7 @@
 			children = (
 				513DB0E42707900C00A528F3 /* SignupViewModel.swift */,
 				513DB0F82707AC8B00A528F3 /* UserDetailViewModel.swift */,
+				513DB1002707BB1D00A528F3 /* UserDetailsViewBuilder.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -345,13 +351,16 @@
 				513DB0DE2707888800A528F3 /* ButtonStyle.swift in Sources */,
 				513DB0EE27079B5300A528F3 /* UserManagerService.swift in Sources */,
 				513DB0AF2707764400A528F3 /* SignupCodeChallengeApp.swift in Sources */,
+				513DB1032707BB5D00A528F3 /* UserDetailView.swift in Sources */,
 				513DB0E52707900C00A528F3 /* SignupViewModel.swift in Sources */,
 				513DB0F32707A64300A528F3 /* MockAuthenticationService.swift in Sources */,
+				513DB1012707BB1D00A528F3 /* UserDetailsViewBuilder.swift in Sources */,
 				513DB0EA2707933800A528F3 /* User.swift in Sources */,
 				513DB0E227078B1800A528F3 /* ImagePicker.swift in Sources */,
 				513DB0DB2707818C00A528F3 /* SignupTextField.swift in Sources */,
 				513DB0E027078A2500A528F3 /* ColorExtension.swift in Sources */,
 				513DB0F027079B6E00A528F3 /* AuthenticationService.swift in Sources */,
+				513DB1022707BB4100A528F3 /* UserDetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,7 +369,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				513DB0F52707A6B500A528F3 /* SignupViewModelTests.swift in Sources */,
-				513DB0F92707AC8C00A528F3 /* UserDetailViewModel.swift in Sources */,
 				513DB0FB2707AD1700A528F3 /* UserDetailViewModelTests.swift in Sources */,
 				513DB0C02707764800A528F3 /* SignupCodeChallengeTests.swift in Sources */,
 			);

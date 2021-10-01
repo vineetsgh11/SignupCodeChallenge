@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftUI
-import Combine
 
 class SignupViewModel: ObservableObject
 {
@@ -65,6 +64,12 @@ class SignupViewModel: ObservableObject
         enableSubmitButton = !emailAddress.isEmpty && !password.isEmpty
     }
    
+}
+
+extension SignupViewModel {
+  var userDetailView: some View {
+      return UserDetailsViewBuilder.makeUserDetailView(withUserManagerService: self.userManagerService)
+  }
 }
 
 extension String {
