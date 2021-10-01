@@ -47,6 +47,9 @@ struct SignupView: View {
             .accessibilityIdentifier("VerticalStack")
             .navigationBarTitle("")
             .navigationBarHidden(true)
+            .sheet(isPresented: $isShowPhotoLibrary) {
+                ImagePickerView(selectedImage: self.$selectedImage, sourceType: .photoLibrary)
+            }
         }
     }
 }
@@ -90,7 +93,7 @@ private extension SignupView {
                 Spacer()
                 
                 Button(action: {
-                   print("add image button clicked")
+                  isShowPhotoLibrary = true
                 }, label: {
                     
                     if selectedImage != nil {

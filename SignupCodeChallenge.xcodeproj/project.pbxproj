@@ -17,6 +17,7 @@
 		513DB0DB2707818C00A528F3 /* SignupTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DB0DA2707818C00A528F3 /* SignupTextField.swift */; };
 		513DB0DE2707888800A528F3 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DB0DD2707888800A528F3 /* ButtonStyle.swift */; };
 		513DB0E027078A2500A528F3 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DB0DF27078A2500A528F3 /* ColorExtension.swift */; };
+		513DB0E227078B1800A528F3 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DB0E127078B1800A528F3 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		513DB0DA2707818C00A528F3 /* SignupTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupTextField.swift; sourceTree = "<group>"; };
 		513DB0DD2707888800A528F3 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		513DB0DF27078A2500A528F3 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		513DB0E127078B1800A528F3 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 				513DB0DA2707818C00A528F3 /* SignupTextField.swift */,
 				513DB0DD2707888800A528F3 /* ButtonStyle.swift */,
 				513DB0DF27078A2500A528F3 /* ColorExtension.swift */,
+				513DB0E127078B1800A528F3 /* ImagePicker.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				513DB0B12707764400A528F3 /* SignupView.swift in Sources */,
 				513DB0DE2707888800A528F3 /* ButtonStyle.swift in Sources */,
 				513DB0AF2707764400A528F3 /* SignupCodeChallengeApp.swift in Sources */,
+				513DB0E227078B1800A528F3 /* ImagePicker.swift in Sources */,
 				513DB0DB2707818C00A528F3 /* SignupTextField.swift in Sources */,
 				513DB0E027078A2500A528F3 /* ColorExtension.swift in Sources */,
 			);
