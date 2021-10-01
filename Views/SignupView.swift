@@ -11,14 +11,7 @@ struct SignupView: View {
     
     @State private var selectedImage: UIImage?
     
-    @State private var isShowPhotoLibrary: Bool = false
-    @State private var firstName: String = ""
-    @State private var emailAddress: String = ""
-    @State private var password: String = ""
-    @State private var website: String = ""
-    let descriptionText = "Use the form below to submit your portfolio. An email and password are required."
-
-
+    @ObservedObject var viewModel: SignupViewModel
         
     var body: some View {
         NavigationView {
@@ -30,13 +23,13 @@ struct SignupView: View {
                 
                 profileImageButton
                 
-                SignupTextField("First Name", text: $firstName, type: .regular, accessibilityIdentifier: "firstNameField")
+                SignupTextField("First Name", text: $viewModel.firstName, type: .regular, accessibilityIdentifier: "firstNameField")
                 
-                SignupTextField("EmailAddress", text: $emailAddress, type: .regular, accessibilityIdentifier: "emailAddressField")
+                SignupTextField("EmailAddress", text: $viewModel.emailAddress, type: .regular, accessibilityIdentifier: "emailAddressField")
                 
-                SignupTextField("Password", text: $password, type: .password, accessibilityIdentifier:  "passwordField")
+                SignupTextField("Password", text: $viewModel.password, type: .password, accessibilityIdentifier:  "passwordField")
                 
-                SignupTextField("Website", text: $website, type: .regular, accessibilityIdentifier: "websiteField")
+                SignupTextField("Website", text: $viewModel.website, type: .regular, accessibilityIdentifier: "websiteField")
                 
                 Spacer()
                 
@@ -47,7 +40,7 @@ struct SignupView: View {
             .accessibilityIdentifier("VerticalStack")
             .navigationBarTitle("")
             .navigationBarHidden(true)
-            .sheet(isPresented: $isShowPhotoLibrary) {
+            .sheet(isPresented: $viewModel.isShowPhotoLibrary) {
                 ImagePickerView(selectedImage: self.$selectedImage, sourceType: .photoLibrary)
             }
         }
@@ -74,13 +67,13 @@ private extension SignupView {
     {
         Section
         {
-            Text(descriptionText)
+            Text(viewModel.descriptionText)
                 .font(.title3)
                 .foregroundColor(Color(.gray))
                 .fontWeight(.semibold)
                 .minimumScaleFactor(0.5)
                 .lineLimit(2)
-                .accessibilityLabel(descriptionText)
+                .accessibilityLabel(viewModel.descriptionText)
                 .accessibilityIdentifier("headerDescriptonText")
         }
     }
@@ -93,7 +86,7 @@ private extension SignupView {
                 Spacer()
                 
                 Button(action: {
-                  isShowPhotoLibrary = true
+                    viewModel.isShowPhotoLibrary = true
                 }, label: {
                     
                     if selectedImage != nil {
@@ -142,6 +135,6 @@ private extension SignupView {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        SignupView()
+        SignupView(viewModel: SignupViewModel())
     }
 }

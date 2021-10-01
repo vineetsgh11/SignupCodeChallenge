@@ -18,7 +18,7 @@ class SignupViewModel: ObservableObject
     @Published var isShowPhotoLibrary = false
     @Published var enableSubmitButton = false
 
-    let desctiptionText = "Use the form below to submit your portfolio. An email and password are required."
+    let descriptionText = "Use the form below to submit your portfolio. An email and password are required."
 
     var isEmailValid : Bool   = false
     var isWebsiteUrlValid : Bool   = true
