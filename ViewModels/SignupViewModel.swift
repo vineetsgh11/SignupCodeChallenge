@@ -25,6 +25,9 @@ class SignupViewModel: ObservableObject
     @Published var website: String = ""
     @Published var isShowPhotoLibrary = false
     @Published var enableSubmitButton = false
+    @Published var profilePictureData : Data?
+    @Published var pushDetailView = false
+
 
     let descriptionText = "Use the form below to submit your portfolio. An email and password are required."
 
@@ -38,6 +41,23 @@ class SignupViewModel: ObservableObject
     {
         self.authenticatonService = authenticatonService
         self.userManagerService = userManagerService
+    }
+    
+    func AuthenticateUser()
+    {
+        authenticatonService.authenticateUser(name: firstName, email: emailAddress, password: password, profilePicture: self.profilePictureData, website: website) {[weak self] result in
+            
+            guard let self = self else {return}
+            
+            switch(result)
+            {
+                case .success(let user):
+                    print("user is ... \(user)")
+                   self.pushDetailView = true
+                case .failure(let error):
+                    print("login failed.. error : \(error)")
+            }
+        }
     }
     
     func updateSubmitButton()

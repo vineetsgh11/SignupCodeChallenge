@@ -40,7 +40,11 @@ struct SignupView: View {
             .accessibilityIdentifier("VerticalStack")
             .navigationBarTitle("")
             .navigationBarHidden(true)
-            .sheet(isPresented: $viewModel.isShowPhotoLibrary) {
+            .sheet(isPresented: $viewModel.isShowPhotoLibrary, onDismiss: {
+                
+                guard let img = self.selectedImage else {return}
+                viewModel.profilePictureData =  UIImage.pngData(img)()
+            }) {
                 ImagePickerView(selectedImage: self.$selectedImage, sourceType: .photoLibrary)
             }
         }
@@ -128,6 +132,8 @@ private extension SignupView {
                 .accessibilityLabel("Submit")
                 .accessibilityIdentifier("submitButton")
                 .buttonStyle(CustomButtonStyle())
+                .disabled(!$viewModel.enableSubmitButton.wrappedValue)
+
             
         }
     }
