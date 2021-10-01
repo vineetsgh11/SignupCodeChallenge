@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		513DB0AF2707764400A528F3 /* SignupCodeChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DB0AE2707764400A528F3 /* SignupCodeChallengeApp.swift */; };
-		513DB0B12707764400A528F3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DB0B02707764400A528F3 /* ContentView.swift */; };
+		513DB0B12707764400A528F3 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DB0B02707764400A528F3 /* SignupView.swift */; };
 		513DB0B32707764700A528F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 513DB0B22707764700A528F3 /* Assets.xcassets */; };
 		513DB0B62707764700A528F3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 513DB0B52707764700A528F3 /* Preview Assets.xcassets */; };
 		513DB0C02707764800A528F3 /* SignupCodeChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DB0BF2707764800A528F3 /* SignupCodeChallengeTests.swift */; };
 		513DB0CA2707764800A528F3 /* SignupCodeChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DB0C92707764800A528F3 /* SignupCodeChallengeUITests.swift */; };
 		513DB0CC2707764800A528F3 /* SignupCodeChallengeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DB0CB2707764800A528F3 /* SignupCodeChallengeUITestsLaunchTests.swift */; };
+		513DB0DB2707818C00A528F3 /* SignupTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DB0DA2707818C00A528F3 /* SignupTextField.swift */; };
+		513DB0DE2707888800A528F3 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DB0DD2707888800A528F3 /* ButtonStyle.swift */; };
+		513DB0E027078A2500A528F3 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DB0DF27078A2500A528F3 /* ColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +39,7 @@
 /* Begin PBXFileReference section */
 		513DB0AB2707764400A528F3 /* SignupCodeChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SignupCodeChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		513DB0AE2707764400A528F3 /* SignupCodeChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupCodeChallengeApp.swift; sourceTree = "<group>"; };
-		513DB0B02707764400A528F3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		513DB0B02707764400A528F3 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		513DB0B22707764700A528F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		513DB0B52707764700A528F3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		513DB0BB2707764800A528F3 /* SignupCodeChallengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SignupCodeChallengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +47,9 @@
 		513DB0C52707764800A528F3 /* SignupCodeChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SignupCodeChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		513DB0C92707764800A528F3 /* SignupCodeChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupCodeChallengeUITests.swift; sourceTree = "<group>"; };
 		513DB0CB2707764800A528F3 /* SignupCodeChallengeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupCodeChallengeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		513DB0DA2707818C00A528F3 /* SignupTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupTextField.swift; sourceTree = "<group>"; };
+		513DB0DD2707888800A528F3 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
+		513DB0DF27078A2500A528F3 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +80,8 @@
 		513DB0A22707764400A528F3 = {
 			isa = PBXGroup;
 			children = (
+				513DB0D92707815700A528F3 /* CustomViews */,
+				513DB0D82707814400A528F3 /* Views */,
 				513DB0AD2707764400A528F3 /* SignupCodeChallenge */,
 				513DB0BE2707764800A528F3 /* SignupCodeChallengeTests */,
 				513DB0C82707764800A528F3 /* SignupCodeChallengeUITests */,
@@ -95,7 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				513DB0AE2707764400A528F3 /* SignupCodeChallengeApp.swift */,
-				513DB0B02707764400A528F3 /* ContentView.swift */,
 				513DB0B22707764700A528F3 /* Assets.xcassets */,
 				513DB0B42707764700A528F3 /* Preview Content */,
 			);
@@ -125,6 +132,24 @@
 				513DB0CB2707764800A528F3 /* SignupCodeChallengeUITestsLaunchTests.swift */,
 			);
 			path = SignupCodeChallengeUITests;
+			sourceTree = "<group>";
+		};
+		513DB0D82707814400A528F3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				513DB0B02707764400A528F3 /* SignupView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		513DB0D92707815700A528F3 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				513DB0DA2707818C00A528F3 /* SignupTextField.swift */,
+				513DB0DD2707888800A528F3 /* ButtonStyle.swift */,
+				513DB0DF27078A2500A528F3 /* ColorExtension.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +282,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				513DB0B12707764400A528F3 /* ContentView.swift in Sources */,
+				513DB0B12707764400A528F3 /* SignupView.swift in Sources */,
+				513DB0DE2707888800A528F3 /* ButtonStyle.swift in Sources */,
 				513DB0AF2707764400A528F3 /* SignupCodeChallengeApp.swift in Sources */,
+				513DB0DB2707818C00A528F3 /* SignupTextField.swift in Sources */,
+				513DB0E027078A2500A528F3 /* ColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
