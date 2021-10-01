@@ -23,10 +23,12 @@ class SignupViewModel: ObservableObject
     }
     @Published var website: String = ""
     @Published var isShowPhotoLibrary = false
+    @Published var showAlert = false
     @Published var enableSubmitButton = false
     @Published var profilePictureData : Data?
     @Published var pushDetailView = false
-
+    
+    var alertProvider = AlertProvider()
 
     let descriptionText = "Use the form below to submit your portfolio. An email and password are required."
 
@@ -44,17 +46,20 @@ class SignupViewModel: ObservableObject
     
     func AuthenticateUser()
     {
-        authenticatonService.authenticateUser(name: firstName, email: emailAddress, password: password, profilePicture: self.profilePictureData, website: website) {[weak self] result in
-            
-            guard let self = self else {return}
-            
-            switch(result)
-            {
+        if(canSubmit())
+        {
+            authenticatonService.authenticateUser(name: firstName, email: emailAddress, password: password, profilePicture: self.profilePictureData, website: website) {[weak self] result in
+                
+                guard let self = self else {return}
+                
+                switch(result)
+                {
                 case .success(let user):
                     print("user is ... \(user)")
-                   self.pushDetailView = true
+                    self.pushDetailView = true
                 case .failure(let error):
                     print("login failed.. error : \(error)")
+                }
             }
         }
     }
@@ -63,6 +68,7 @@ class SignupViewModel: ObservableObject
     {
         enableSubmitButton = !emailAddress.isEmpty && !password.isEmpty
     }
+    
    
 }
 
@@ -70,6 +76,35 @@ extension SignupViewModel {
   var userDetailView: some View {
       return UserDetailsViewBuilder.makeUserDetailView(withUserManagerService: self.userManagerService)
   }
+    
+    func canSubmit() -> Bool
+    {
+        if(!emailAddress.isValidEmail)
+        {
+            showErrorAlert(title: "", message: "Please enter valid email address", dismissButtonText: "OK")
+            return false
+            
+        }
+        else if(!website.isValidURL)
+        {
+            showErrorAlert(title: "", message: "Please enter valid website address", dismissButtonText: "OK")
+            return false
+        }
+        
+        return true
+    }
+    
+    func showErrorAlert(title : String, message : String, dismissButtonText : String)
+    {
+        alertProvider.alert = AlertProvider.Alert(
+                title: title,
+                message: message,
+                dismissButtonText: dismissButtonText
+            )
+        
+        showAlert = true
+
+    }
 }
 
 extension String {

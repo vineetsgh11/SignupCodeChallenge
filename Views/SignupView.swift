@@ -25,9 +25,9 @@ struct SignupView: View {
                 
                 SignupTextField("First Name", text: $viewModel.firstName, type: .regular, accessibilityIdentifier: "firstNameField")
                 
-                SignupTextField("EmailAddress", text: $viewModel.emailAddress, type: .regular, accessibilityIdentifier: "emailAddressField")
+                SignupTextField("Email Address *", text: $viewModel.emailAddress, type: .regular, accessibilityIdentifier: "emailAddressField")
                 
-                SignupTextField("Password", text: $viewModel.password, type: .password, accessibilityIdentifier:  "passwordField")
+                SignupTextField("Password *", text: $viewModel.password, type: .password, accessibilityIdentifier:  "passwordField")
                 
                 SignupTextField("Website", text: $viewModel.website, type: .regular, accessibilityIdentifier: "websiteField")
                 
@@ -47,6 +47,10 @@ struct SignupView: View {
             }) {
                 ImagePickerView(selectedImage: self.$selectedImage, sourceType: .photoLibrary)
             }
+        }
+        .alert(isPresented: $viewModel.showAlert ) {
+                guard let alert = viewModel.alertProvider.alert else { fatalError("Alert not available") }
+                return Alert(alert)
         }
     }
 }
@@ -140,8 +144,9 @@ private extension SignupView {
                 .accessibilityIdentifier("submitButton")
                 .buttonStyle(CustomButtonStyle())
                 .disabled(!$viewModel.enableSubmitButton.wrappedValue)
-
-            userDetailViewNavigationLink
+                
+                userDetailViewNavigationLink
+            
             
         }
     }
