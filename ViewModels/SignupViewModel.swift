@@ -79,7 +79,12 @@ extension SignupViewModel {
     
     func canSubmit() -> Bool
     {
-        if(!emailAddress.isValidEmail)
+        if(password.count < 8)
+        {
+            showErrorAlert(title: "", message: "Password should be atleast 8 characters long.", dismissButtonText: "OK")
+            return false
+        }
+        else if(!emailAddress.isValidEmail)
         {
             showErrorAlert(title: "", message: "Please enter valid email address", dismissButtonText: "OK")
             return false

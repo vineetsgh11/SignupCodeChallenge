@@ -14,9 +14,7 @@ struct UserDetailView : View {
     @ObservedObject var viewModel: UserDetailViewModel
     
     var body: some View {
-        
-        NavigationView {
-            
+                    
             VStack(alignment: .leading, spacing: 15)
             {
                 welcomeText
@@ -58,10 +56,8 @@ struct UserDetailView : View {
                 
             }
             .padding()
-
-        }
-        .navigationBarTitle("")
-        .navigationBarHidden(true)
+            .navigationBarTitle("Test")
+            .navigationBarHidden(true)
         
     }
         

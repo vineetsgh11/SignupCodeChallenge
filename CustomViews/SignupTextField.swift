@@ -19,13 +19,16 @@ struct SignupTextField : View
     let accessibilityIdentifier : String
     let text : Binding<String>
     let type : TextFieldType
+    let keyboardType : UIKeyboardType
 
-    init(_ title: String, text: Binding<String>, type : TextFieldType, accessibilityIdentifier : String)
+
+    init(_ title: String, text: Binding<String>, type : TextFieldType, accessibilityIdentifier : String, keyboardType : UIKeyboardType)
     {
         self.title = title
         self.text =  text
         self.type = type
         self.accessibilityIdentifier = accessibilityIdentifier
+        self.keyboardType = keyboardType
     }
     
     var body: some View

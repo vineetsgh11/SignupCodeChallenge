@@ -23,13 +23,13 @@ struct SignupView: View {
                 
                 profileImageButton
                 
-                SignupTextField("First Name", text: $viewModel.firstName, type: .regular, accessibilityIdentifier: "firstNameField")
+                SignupTextField("First Name", text: $viewModel.firstName, type: .regular, accessibilityIdentifier: "firstNameField", keyboardType: .default)
                 
-                SignupTextField("Email Address *", text: $viewModel.emailAddress, type: .regular, accessibilityIdentifier: "emailAddressField")
+                SignupTextField("Email Address *", text: $viewModel.emailAddress, type: .regular, accessibilityIdentifier: "emailAddressField", keyboardType: .emailAddress)
                 
-                SignupTextField("Password *", text: $viewModel.password, type: .password, accessibilityIdentifier:  "passwordField")
+                SignupTextField("Password *", text: $viewModel.password, type: .password, accessibilityIdentifier:  "passwordField", keyboardType: .default)
                 
-                SignupTextField("Website", text: $viewModel.website, type: .regular, accessibilityIdentifier: "websiteField")
+                SignupTextField("Website", text: $viewModel.website, type: .regular, accessibilityIdentifier: "websiteField", keyboardType: .emailAddress)
                 
                 Spacer()
                 

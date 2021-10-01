@@ -45,7 +45,7 @@ class SignupViewModelTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         
-        viewModel.password = "abc"
+        viewModel.password = "Test@1234"
         
         XCTAssertFalse(viewModel.enableSubmitButton)
     }
@@ -64,7 +64,7 @@ class SignupViewModelTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         
         viewModel.emailAddress = "abc@gmail.com"
-        viewModel.password = "abc"
+        viewModel.password = "Test@1234"
 
         XCTAssertTrue(viewModel.enableSubmitButton)
     }
@@ -111,8 +111,18 @@ class SignupViewModelTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         
-        viewModel.password = "xyz"
+        viewModel.password = "test1"
         viewModel.emailAddress = "abc"
+        
+        
+        // Invalid Password
+        XCTAssertFalse(viewModel.canSubmit())
+        // should create alert for invalid password
+        XCTAssertNotNil(viewModel.alertProvider.alert)
+        XCTAssertEqual("Password should be atleast 8 characters long.", viewModel.alertProvider.alert!.message)
+        XCTAssertTrue(viewModel.showAlert)
+
+        viewModel.password = "Test@1234"
 
         // Invalid email address
         XCTAssertFalse(viewModel.canSubmit())
@@ -121,6 +131,7 @@ class SignupViewModelTests: XCTestCase {
         XCTAssertEqual("Please enter valid email address", viewModel.alertProvider.alert!.message)
         XCTAssertTrue(viewModel.showAlert)
         
+        
         //valid emailAddress
         viewModel.emailAddress = "abc@gmail.com"
         // can submit since we have valid email and password
@@ -128,7 +139,7 @@ class SignupViewModelTests: XCTestCase {
         
         // Valid email, password but invalid websitelink, should not submit
 
-        viewModel.password = "xyz"
+        viewModel.password = "Test@1234"
         viewModel.emailAddress = "abc@gmail.com"
         viewModel.website = "abc"
         XCTAssertFalse(viewModel.canSubmit())
@@ -136,7 +147,7 @@ class SignupViewModelTests: XCTestCase {
         XCTAssertEqual("Please enter valid website address", viewModel.alertProvider.alert!.message)
         
         // Valid email, password and website - should enable submit
-        viewModel.password = "xyz"
+        viewModel.password = "Test@1234"
         viewModel.emailAddress = "abc@gmail.com"
         viewModel.website = "abc.com"
         XCTAssertTrue(viewModel.canSubmit())
@@ -149,6 +160,7 @@ class SignupViewModelTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         
         viewModel.firstName = "Test User"
+        viewModel.password = "Test@1234"
         viewModel.emailAddress = "test@gmail.com"
         viewModel.website = "abc.com"
         viewModel.profilePictureData = Data(base64Encoded: "iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4")
