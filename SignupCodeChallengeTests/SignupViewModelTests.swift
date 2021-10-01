@@ -107,6 +107,43 @@ class SignupViewModelTests: XCTestCase {
         XCTAssertTrue(viewModel.website.isValidURL)
     }
     
+    func testCanSubmit() {
+        // This is an example of a functional test case.
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        viewModel.password = "xyz"
+        viewModel.emailAddress = "abc"
+
+        // Invalid email address
+        XCTAssertFalse(viewModel.canSubmit())
+        // should create alert for invalid email
+        XCTAssertNotNil(viewModel.alertProvider.alert)
+        XCTAssertEqual("Please enter valid email address", viewModel.alertProvider.alert!.message)
+        XCTAssertTrue(viewModel.showAlert)
+        
+        //valid emailAddress
+        viewModel.emailAddress = "abc@gmail.com"
+        // can submit since we have valid email and password
+        XCTAssertTrue(viewModel.canSubmit())
+        
+        // Valid email, password but invalid websitelink, should not submit
+
+        viewModel.password = "xyz"
+        viewModel.emailAddress = "abc@gmail.com"
+        viewModel.website = "abc"
+        XCTAssertFalse(viewModel.canSubmit())
+        XCTAssertNotNil(viewModel.alertProvider.alert)
+        XCTAssertEqual("Please enter valid website address", viewModel.alertProvider.alert!.message)
+        
+        // Valid email, password and website - should enable submit
+        viewModel.password = "xyz"
+        viewModel.emailAddress = "abc@gmail.com"
+        viewModel.website = "abc.com"
+        XCTAssertTrue(viewModel.canSubmit())
+
+
+    }
+    
     func testAuthenticateUser_ShouldCallAuthenticatonService_UserShouldbePopulated() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
