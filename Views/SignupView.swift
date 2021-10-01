@@ -135,6 +135,8 @@ private extension SignupView {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        SignupView(viewModel: SignupViewModel())
+        let userManagerService = UserManagerService()
+        let authenticationService = AuthenticationService(userManagerService: userManagerService)
+        SignupView(viewModel: SignupViewModel(authenticatonService: authenticationService, userManagerService: userManagerService))
     }
 }
