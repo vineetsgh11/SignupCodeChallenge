@@ -12,6 +12,7 @@ struct SignupView: View {
     @State private var selectedImage: UIImage?
     
     @ObservedObject var viewModel: SignupViewModel
+    
         
     var body: some View {
         NavigationView {
@@ -22,7 +23,7 @@ struct SignupView: View {
                 informationText
                 
                 profileImageButton
-                
+                                
                 SignupTextField("First Name", text: $viewModel.firstName, type: .regular, accessibilityIdentifier: "firstNameField", keyboardType: .default)
                 
                 SignupTextField("Email Address *", text: $viewModel.emailAddress, type: .regular, accessibilityIdentifier: "emailAddressField", keyboardType: .emailAddress)
@@ -40,14 +41,15 @@ struct SignupView: View {
             .accessibilityIdentifier("VerticalStack")
             .navigationBarTitle("")
             .navigationBarHidden(true)
-            .sheet(isPresented: $viewModel.isShowPhotoLibrary, onDismiss: {
+            .sheet(isPresented: $viewModel.showCamera, onDismiss: {
                 
                 guard let img = self.selectedImage else {return}
-                viewModel.profilePictureData =  UIImage.pngData(img)()
+                viewModel.profilePictureData = img.jpegData(compressionQuality: 1.0)
             }) {
-                ImagePickerView(selectedImage: self.$selectedImage, sourceType: .photoLibrary)
+                ImagePickerView(selectedImage: self.$selectedImage, sourceType: .camera)
             }
         }
+        .preferredColorScheme(.light)
         .alert(isPresented: $viewModel.showAlert ) {
                 guard let alert = viewModel.alertProvider.alert else { fatalError("Alert not available") }
                 return Alert(alert)
@@ -72,6 +74,7 @@ private extension SignupView {
             Text("Profile Creation")
                 .font(.largeTitle)
                 .fontWeight(.heavy)
+                .minimumScaleFactor(0.5)
                 .foregroundColor(Color(.darkGray))
                 .accessibilityLabel("Profile Creation")
                 .accessibilityIdentifier("profileCreation")
@@ -101,22 +104,26 @@ private extension SignupView {
                 Spacer()
                 
                 Button(action: {
-                    viewModel.isShowPhotoLibrary = true
+                    viewModel.requestCamerapermission()
                 }, label: {
                     
                     if selectedImage != nil {
-                                        Image(uiImage: selectedImage!)
-                                        .resizable()
-                                        .clipped()
-                                        .aspectRatio(contentMode: .fit)
-                                    } else {
-                                        Image("TapToAddIcon")
-                                            .resizable()
-                                            .clipped()
-                                            .aspectRatio(contentMode: .fit)
-                                    }
+                        Image(uiImage: selectedImage!)
+                            .resizable()
+                            .scaledToFit()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 140, height: 180)
+                            .cornerRadius(25)
+                            .accessibilityLabel("Profile Picture")
+                            .accessibilityIdentifier("profilePicture")
+                    } else {
+                        Image("TapToAddIcon")
+                            .resizable()
+                            .clipped()
+                            .aspectRatio(contentMode: .fit)
+                    }
                 })
-                    .frame(width: 150, height: 200)
+                    .frame(width: 140, height: 180)
                     .cornerRadius(25)
                     .accessibilityLabel("Tap to add avatar")
                     .accessibilityIdentifier("avatarButton")
@@ -126,6 +133,7 @@ private extension SignupView {
             }
         }
     }
+    
     
     var submitButton : some View
     {
@@ -155,7 +163,8 @@ private extension SignupView {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let userManagerService = UserManagerService()
+        let cameraManager = CameraManager()
         let authenticationService = AuthenticationService(userManagerService: userManagerService)
-        SignupView(viewModel: SignupViewModel(authenticatonService: authenticationService, userManagerService: userManagerService))
+        SignupView(viewModel: SignupViewModel(authenticatonService: authenticationService, userManagerService: userManagerService, cameraManager: cameraManager))
     }
 }

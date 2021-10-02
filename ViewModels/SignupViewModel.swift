@@ -22,7 +22,7 @@ class SignupViewModel: ObservableObject
         }
     }
     @Published var website: String = ""
-    @Published var isShowPhotoLibrary = false
+    @Published var showCamera = false
     @Published var showAlert = false
     @Published var enableSubmitButton = false
     @Published var profilePictureData : Data?
@@ -37,11 +37,29 @@ class SignupViewModel: ObservableObject
 
     private let authenticatonService: AuthenticationServiceProtocol
     private let userManagerService: UserManagerServiceProtocol
+    private let cameraManager : CameraManagerProtocol
+
     
-    init( authenticatonService: AuthenticationServiceProtocol, userManagerService : UserManagerServiceProtocol)
+    init( authenticatonService: AuthenticationServiceProtocol, userManagerService : UserManagerServiceProtocol, cameraManager : CameraManagerProtocol)
     {
         self.authenticatonService = authenticatonService
         self.userManagerService = userManagerService
+        self.cameraManager = cameraManager
+    }
+    
+    func requestCamerapermission()
+    {
+        self.cameraManager.requestPermission { [weak self]permission in
+            
+            guard let self = self else {return}
+            
+            self.showCamera = permission
+            
+            if(!permission)
+            {
+                self.showErrorAlert(title: "", message: "Please enable camera permission in app settings.", dismissButtonText: "OK")
+            }
+        }
     }
     
     func AuthenticateUser()

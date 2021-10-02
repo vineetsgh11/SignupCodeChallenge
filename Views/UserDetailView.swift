@@ -55,6 +55,7 @@ struct UserDetailView : View {
                 signinButton
                 
             }
+            .preferredColorScheme(.light)
             .padding()
             .navigationBarTitle("Test")
             .navigationBarHidden(true)

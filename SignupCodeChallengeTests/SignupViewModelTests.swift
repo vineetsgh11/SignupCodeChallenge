@@ -13,6 +13,7 @@ class SignupViewModelTests: XCTestCase {
     var viewModel : SignupViewModel!
     var autheticatonService : MockAuthenticationService!
     var userManagerService : UserManagerService!
+    var cameraManager : MockCameraManager!
 
 
     override func setUpWithError() throws {
@@ -20,9 +21,10 @@ class SignupViewModelTests: XCTestCase {
         
         try? super.setUpWithError()
         
+        cameraManager = MockCameraManager()
         userManagerService = UserManagerService()
         autheticatonService = MockAuthenticationService(userManagerService: userManagerService)
-        viewModel = SignupViewModel(authenticatonService: autheticatonService, userManagerService: userManagerService)
+        viewModel = SignupViewModel(authenticatonService: autheticatonService, userManagerService: userManagerService, cameraManager: cameraManager)
     }
 
     override func tearDownWithError() throws {
@@ -31,6 +33,7 @@ class SignupViewModelTests: XCTestCase {
         self.viewModel = nil
         self.autheticatonService = nil
         self.userManagerService =  nil
+        self.cameraManager = nil
     }
     
 
@@ -175,6 +178,31 @@ class SignupViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.emailAddress, userManagerService.getUser()!.emailAddress)
         XCTAssertEqual(viewModel.website, userManagerService.getUser()!.website)
         XCTAssertEqual(viewModel.profilePictureData!, userManagerService.getUser()!.profilePictureData!)
+    }
+    
+    func testCheckCameraPermission_AccessNotGranted_ShouldShowError() {
+        
+        // permission is not granted
+        cameraManager.accessGranted = false
+        viewModel.requestCamerapermission()
+        XCTAssertTrue(cameraManager.requestPermissionCalled)
+        XCTAssertFalse(viewModel.showCamera)
+        XCTAssertNotNil(viewModel.alertProvider.alert)
+        XCTAssertEqual("Please enable camera permission in app settings.", viewModel.alertProvider.alert!.message)
+        
+        
+        
+    }
+    
+    func testCheckCameraPermission_AccessGranted_ShouldNotShowError() {
+        
+        // permission is granted
+        cameraManager.accessGranted = true
+        viewModel.requestCamerapermission()
+        XCTAssertTrue(cameraManager.requestPermissionCalled)
+        XCTAssertTrue(viewModel.showCamera)
+        XCTAssertNil(viewModel.alertProvider.alert)
+        
     }
 
     func testPerformanceExample() {

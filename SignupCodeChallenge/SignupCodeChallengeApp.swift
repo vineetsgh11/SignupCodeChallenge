@@ -11,10 +11,11 @@ import SwiftUI
 struct SignupCodeChallengeApp: App {
     var body: some Scene {
         WindowGroup {
+            let cameraManager = CameraManager()
             let userManagerService = UserManagerService()
             let authenticationService = AuthenticationService(userManagerService: userManagerService)
             
-            SignupView(viewModel: SignupViewModel(authenticatonService: authenticationService, userManagerService: userManagerService))
+            SignupView(viewModel: SignupViewModel(authenticatonService: authenticationService, userManagerService: userManagerService, cameraManager: cameraManager))
         }
     }
 }
